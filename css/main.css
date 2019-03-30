@@ -1,0 +1,151 @@
+div, h1 {
+    font-family: 'Kosugi Maru';
+}
+
+h1 {
+    font-size: 56px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 36px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 28px;
+    text-align: center;
+}
+
+h4 {
+    font-size: 22px; 
+    text-align: center;
+}
+
+.chinese {
+    font-family: 'Noto Sans SC', sans-serif !important;
+}
+
+.center {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.center-vertical {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+.center-horizontal {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+}
+
+.over-result:hover {
+    cursor: pointer;
+    background-color: rgb(228, 228, 228); 
+}
+
+.over-result {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 20%;
+    padding: 5px;
+}
+
+.res-margin {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#point-result {
+
+}
+
+
+
+/* popup-settings */
+
+.hidden {
+    display: none !important;
+}
+
+.popup-background {
+    position: fixed; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0; 
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50; 
+}
+
+.popup-mainbox {
+    background-color: white; 
+    border: 10px solid gainsboro;
+    z-index: 100;
+    width: 80%;
+    height: 80%;
+}
+
+.popup-title {
+    margin: 20px;
+    padding-bottom: 20px; 
+    border-bottom: 2px solid black;
+}
+
+.button-type:hover {
+    cursor: pointer;
+    background-color: rgb(228, 228, 228); 
+}
+
+.button-type {
+    border: 1px solid black;
+    /* border-radius: 20%; */
+    padding: 5px;
+    text-align: center; 
+    font-size: 20px; 
+    margin: 10px; 
+}
+
+.close:hover {
+    cursor: pointer;
+    background-color: #ff5151;
+}
+
+.confirm:hover {
+    cursor: pointer;
+    background-color: #b5ff6b;
+}
+
+.close {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px; 
+    position: absolute;
+    padding: 0 5px;
+    top: 10px; 
+    right: 10px; 
+}
+
+.confirm {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px; 
+    position: absolute;
+    padding: 0 5px;
+    bottom: 10px; 
+    right: 10px;     
+}
+
+.mentsu-count {
+    display: inline-block; 
+    margin: 10px 5px; 
+    width: 25%;
+}

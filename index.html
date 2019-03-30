@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Point Calculator</title>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/popup-setting.css">
+    
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru|Noto+Sans+SC" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- main -->
+    <div class="center">
+    <div style="text-align: center">
+        <!-- <div style="display: inline-block; width:35%"></div> -->
+        <h2 id='fan' class="over-result res-margin">5翻</h2>
+        <h2 id='fu' class="over-result res-margin">40符</h2>
+        <h2 id='banker' class="over-result res-margin">親</h2>
+    </div>
+
+    <h1 id='point-display' class='res-margin'>8000点 満貫</h1>
+    <h2 id='point-lose' class='res-margin'>[4000, 2000]</h2>
+    </div> 
+
+    <!-- fan box -->
+    <div id='fan-popup-background' class='popup-background hidden'>
+        <div class='popup-mainbox center'>
+            <h2 class='popup-title chinese'>翻设定</h2>
+            
+            <h4 style="margin: 10px; text-align: left" class="chinese">直接设定</h4>
+            <div style="text-align: center; margin: 20px; padding-bottom: 20px; border-bottom: 2px solid black;">
+            <div style="margin-top: 20px">
+                <h3 id="fan-clear" class='over-result'>C</h3>
+                <h3 id="fan-dec1" class='over-result'>-1</h3>
+                <h1 id="fan-display" style="display: inline-block; margin: 0 30px;">1</h1>
+                <h3 id="fan-add1" class='over-result'>+1</h3>
+                <h1 id="yakuman-display" style="display: inline-block; margin: 0 30px;"></h1>
+            </div>
+            </div>
+            
+            <h4 style="margin: 10px; text-align: left" class="chinese">选择役种</h4>
+            <div style="width: 80%; overflow: scroll; margin: 10px auto; max-height: 40%">
+                <p id='riichi' class="button-type fan-choose">リーチ</p>
+                <p id='tsumo' class="button-type fan-choose">ツモ</p>
+                <p id='ippatsu' class="button-type fan-choose">一発</p>
+                <p id='dora' class="button-type fan-choose">ドラ</p>
+                <p id='yaku' class="button-type fan-choose">役牌</p>
+                <p id='chiitoi' class="button-type fan-choose">七対子</p>
+                <p id='kaitei' class="button-type fan-choose">海底撈月</p>
+                <p id='houtei' class="button-type fan-choose">河底撈魚</p>
+                <p id='rinshan' class="button-type fan-choose">嶺上開花</p>
+                <p id='chankan' class="button-type fan-choose">槍槓</p>
+                <p id='daburii' class="button-type fan-choose">ダブルリーチ</p>
+                <p id='pinfu' class="button-type fan-choose">平和</p>
+                <p id='iipeikoi' class="button-type fan-choose">一盃口</p>
+                <p id='sanshoku' class="button-type fan-choose">三色同順</p>
+                <!-- 門清 -->
+                <p id='ittsuu' class="button-type fan-choose">一気通貫</p>
+                <!-- 門清 -->
+                <p id='ryanpeikou' class="button-type fan-choose">二盃口</p>
+                <p id='toitoi' class="button-type fan-choose">対々和</p>
+                <p id='sanankou' class="button-type fan-choose">三暗刻</p>
+                <p id='sanshokudoukou' class="button-type fan-choose">三色同刻</p>
+                <p id='sankantsu' class="button-type fan-choose">三槓子</p>
+                <p id='danyao' class="button-type fan-choose">タンヤオ</p>
+                <p id='chanta' class="button-type fan-choose">チャンタ</p>
+                <!-- 門清 -->
+                <p id='junchan' class="button-type fan-choose">純チャン</p>
+                <!-- 門清 -->
+                <p id='honrou' class="button-type fan-choose">混老頭</p>
+                <p id='shousangen' class="button-type fan-choose">小三元</p>
+                <p id='honiitsu' class="button-type fan-choose">混一色</p>
+                <!-- 門清 -->
+                <p id='chiniitsu' class="button-type fan-choose">清一色</p>
+                <!-- 門清 -->
+                <p id='nagashimangan' class="button-type fan-choose">流し満貫</p>
+                 
+                <p id='kokushimusou' class="button-type fan-choose">国士無双</p> 
+                <!-- 13面待ち -->
+                <p id='suuanko' class="button-type fan-choose">四暗刻</p>
+                <!-- 単騎 -->
+                <p id='daisangen' class="button-type fan-choose">大三元</p>
+                <p id='shousuushii' class="button-type fan-choose">小四喜</p>
+                <p id='daisuushii' class="button-type fan-choose">大四喜</p>
+                <p id='tsuuiisou' class="button-type fan-choose">字一色</p>
+                <p id='chinroutou' class="button-type fan-choose">清老頭</p>
+                <p id='ryuuiisou' class="button-type fan-choose">緑一色</p>
+                <p id='chuurenpoutou' class="button-type fan-choose">九蓮宝燈</p>
+                <!-- 純正 -->
+                <p id='suukantsu' class="button-type fan-choose">四槓子</p>
+                <p id='tenhou' class="button-type fan-choose">天和</p>
+                <p id='chiihou' class="button-type fan-choose">地和</p>
+            </div>
+
+            <div style='text-align: center'>
+            <p id='dora-clear' style='display: inline-block' class='button-type fan-choose'>ドラclear</p>
+            <p id='yaku-clear' style='display: inline-block' class='button-type fan-choose'>役牌clear</p>
+            <p id='fan-all-clear' style='display: inline-block' class='button-type fan-choose'>all clear</p>
+            <p id='calc-fan' style='display: inline-block' class='button-type fan-choose chinese'>计算</p>
+            </div>
+
+
+            <div id="fan-close" class="close">X</div>
+            <div id="fan-confirm" class="confirm chinese">确定</div>
+        </div>
+    </div>
+
+    <!-- fu box -->
+    <div id='fu-popup-background' class='popup-background hidden'>
+        <div class='popup-mainbox center'>
+            <h2 class='popup-title chinese'>符设定</h2>
+            
+            <h4 style="margin: 10px; text-align: left" class="chinese">直接设定</h4>
+            <div style="text-align: center; margin: 20px; padding-bottom: 20px; border-bottom: 2px solid black;">
+            <div style="margin-top: 20px">
+                <h3 id="fu-clear" class='over-result'>C</h3>
+                <h3 id="fu-dec" class='over-result'>-10</h3>
+                <h1 id="fu-display" style="display: inline-block; margin: 0 30px;">20</h1>
+                <h3 id="fu-add" class='over-result'>+10</h3>
+            </div>
+            </div>
+            
+            <h4 style="margin: 10px; text-align: left" class="chinese">选择牌型</h4>
+            <div style="width: 80%; overflow: scroll; margin: 10px auto; max-height: 40%">
+                <h4 style="margin: 10px; text-align: left" class="chinese">听牌型</h4>
+                <div style="text-align: center; padding-bottom: 5px; border-bottom: 1px solid black;">
+                    <p id='ryanmen-machi' style="display: inline-block" class="button-type fu-choose fu0">両門待ち</p>
+                    <p id='kanchan-machi' style="display: inline-block" class="button-type fu-choose fu2">嵌張待ち</p>
+                    <p id='penchan-machi' style="display: inline-block" class="button-type fu-choose fu2">辺張待ち</p>
+                    <p id='tanki-machi' style="display: inline-block" class="button-type fu-choose fu2">単騎待ち</p>
+                    <p id='shanpon-machi' style="display: inline-block" class="button-type fu-choose fu0">双碰待ち</p>
+                    <!-- 0 2 2 2 0 -->
+                </div>
+                <h4 style="margin: 10px; text-align: left" class="chinese">面子计数</h4>
+                <div style="text-align: center">
+                    <p id='minkodec' class="button-type fu-choose mentsu-count " >-</p>
+                    <p id='minko' class="button-type mentsu-count" >明刻</p>
+                    <p id='minkoadd' class="button-type fu-choose mentsu-count" >+</p>
+                    <br>
+                    <p id='minkoyaochuukodec' class="button-type fu-choose mentsu-count" >-</p>
+                    <p id='minkoyaochuu' class="button-type mentsu-count" >明刻 幺九</p>
+                    <p id='minkoyaochuuadd' class="button-type fu-choose mentsu-count" >+</p>
+                    <br>
+                    <p id='ankodec' class="button-type fu-choose mentsu-count" >-</p>
+                    <p id='anko' class="button-type mentsu-count" >暗刻</p>
+                    <p id='ankoadd' class="button-type fu-choose mentsu-count" >+</p>
+                    <br>
+                    <p id='ankoyaochuudec' class="button-type fu-choose mentsu-count" >-</p>
+                    <p id='ankoyaochuu' class="button-type mentsu-count" >暗刻 幺九</p>
+                    <p id='ankoyaochuuadd' class="button-type fu-choose mentsu-count" >+</p>
+                    <br>
+                    <p id='minkandec' class="button-type fu-choose mentsu-count" >-</p>
+                    <p id='minkan' class="button-type mentsu-count" >明槓</p>
+                    <p id='minkanadd' class="button-type fu-choose mentsu-count" >+</p>
+                    <br>
+                    <p id='minkanyaochuudec' class="button-type fu-choose mentsu-count" >-</p>
+                    <p id='minkanyaochuu' class="button-type mentsu-count" >明槓 幺九</p>
+                    <p id='minkanyaochuuadd' class="button-type fu-choose mentsu-count" >+</p>
+                    <br>
+                    <p id='ankandec' class="button-type fu-choose mentsu-count" >-</p>
+                    <p id='ankan' class="button-type mentsu-count" >暗槓</p>
+                    <p id='ankanadd' class="button-type fu-choose mentsu-count" >+</p>
+                    <br>
+                    <p id='ankanyaochuudec' class="button-type fu-choose mentsu-count" >-</p>
+                    <p id='ankanyaochuu' class="button-type mentsu-count" >暗槓 幺九</p>
+                    <p id='ankanyaochuuadd' class="button-type fu-choose mentsu-count" >+</p>
+                </div>
+                <!-- 2 4 4 8 8 16 16 32 -->
+
+                <h4 style="margin: 10px; text-align: left" class="chinese">雀头</h4>
+                <div style="text-align: center; padding-bottom: 5px; border-bottom: 1px solid black;">
+                    <p id='menfuo-jianto' style="display: inline-block" class="button-type fu-choose fu2">門風牌</p>
+                    <p id='sangen-jianto' style="display: inline-block" class="button-type fu-choose fu2">三元牌</p>
+                    <p id='chanfuo-jianto' style="display: inline-block" class="button-type fu-choose fu2">圏風牌</p>
+                    <p id='ranfuo-jianto' style="display: inline-block" class="button-type fu-choose fu4">連風牌</p>
+                    <p id='sonohoka-jianto' style="display: inline-block" class="button-type fu-choose fu0">その他</p>
+                    <!-- 2 2 2 4 0 -->
+                </div>
+
+                <h4 style="margin: 10px; text-align: left" class="chinese">特殊</h4>
+                <div style="text-align: center; padding-bottom: 5px; border-bottom: 1px solid black;">
+                        <p id='ron-menchin' style="display: inline-block" class="button-type fu-choose special-form">ロン+門清</p>
+                        <p id='jimo-fu' style="display: inline-block" class="button-type fu-choose special-form">ツモ</p>
+                        <p id='pinfu-jimo' style="display: inline-block" class="button-type fu-choose special-form">平和+ツモ</p>
+                        <p id='pinfukata-ron' style="display: inline-block" class="button-type fu-choose special-form">非門清+平和形+ロン</p>
+                        <p id='chiitoi' style="display: inline-block" class="button-type fu-choose special-form">七対, 国士無双</p>
+                        <!-- +10 +2 20 30 25 -->
+                    </div>   
+            </div>
+
+            <div style='text-align: center'>
+            <p id='fu-all-clear' style='display: inline-block' class='button-type'>all clear</p>
+            <p id='calc-fu' style='display: inline-block' class='button-type chinese'>计算</p>
+            </div>
+
+            <div id="fu-close" class="close">X</div>
+            <div id="fu-confirm" class="confirm chinese">确定</div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
